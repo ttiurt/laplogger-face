@@ -1,22 +1,3 @@
-// import styles from "./AllRaces.module.css";
-
-// const AllRaces = (props) => {
-//   return (
-//     <div className={styles.allRaces}>
-//       <h1>RACES WILL BE HERE</h1>
-//       {/* <section>
-//         {props.races ? (
-//           <ul className={styles.allRacesContainer}>{props.races.map()}</ul>
-//         ) : (
-//           <h1>No races!</h1>
-//         )}
-//       </section> */}
-//     </div>
-//   );
-// };
-
-// export default AllRaces;
-
 // npm modules
 import { useState, useEffect } from 'react'
 
