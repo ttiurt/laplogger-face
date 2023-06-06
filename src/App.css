@@ -4,6 +4,11 @@
   box-sizing: inherit;
 }
 
+@font-face {
+  font-family: f1reg;
+  src: url('/fonts/Formula1-Regular.otf');
+}
+
 body {
   box-sizing: border-box;
 
@@ -13,7 +18,7 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #485765;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,11 +29,48 @@ body {
 
 a,
 a:visited {
-  color: #00d8ff
+  color: #ffffff
 }
 
-nav > ul {
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  color: #bebebe;
+}
+
+nav {
+  font-family: f1reg;
+  top: 0; 
+  z-index: 9;
+  width: 100%;
+  height: 65px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: transparent;
+  backdrop-filter: blur(15px);
+  padding-right: 2vw;
+  padding-left: 2vw;
+}
+
+nav img {
+  height: 50px;
+}
+
+nav ul {
+  gap: 32px;
   margin: 0;
-  padding: 16px 32px;
+  width: 100%;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+nav li {
+  text-align: right;
 }
 

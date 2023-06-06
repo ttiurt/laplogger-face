@@ -1,6 +1,15 @@
 /* ---------===== custom props ====--------- */
 
-
+export interface Race {
+  id: number;
+  circuit: string;
+  winner: string;
+  cnstrc: string;
+  watchable: boolean;
+  creatorId: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 /* ---------===== auth models =====--------- */
 

@@ -1,1 +1,1 @@
-# Race Rater
+# Lap Logger

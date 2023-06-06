@@ -1,6 +1,8 @@
 // npm modules
 import { NavLink } from 'react-router-dom'
 
+
+
 // types
 import { User } from '../../types/models'
 
@@ -14,12 +16,13 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   
   return (
     <nav>
+      <NavLink to="/"><img src="/track.png" alt="LL-Logo" /></NavLink>
       {user ?
         <ul>
-          <li>Welcome, {user.name}</li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-          <li><NavLink to="/auth/change-password">Change Password</NavLink></li>
+          <li><NavLink to="/races">Races</NavLink></li>
+          {/* <li className='navProf'><NavLink to="/profiles">Profiles</NavLink></li> */}
+          <li className='navChng'><NavLink to="/auth/change-password">Change Password</NavLink></li>
+          <li className='navLogOut'><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
         </ul>
       :
         <ul>
