@@ -57,9 +57,9 @@ const AllRaces = (props: RaceProps): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      <h1>Hello. This is a list of all the races.</h1>
+      <h1>Races Watched</h1>
       <button onClick={handleShowForm}> {showLogRaceForm ? "cancel" : "Log a Race"}</button>
-      {showLogRaceForm ? <LogRace onSubmit={handleLogRace} race={undefined} /> : ""}
+      {showLogRaceForm ? <LogRace onSubmit={handleLogRace} /> : ""}
       {races.map((race: Race) => (
         <p key={race.id}>{race.circuit}</p>
       ))}
