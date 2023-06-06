@@ -1,11 +1,22 @@
 // npm modules
 import { useState } from "react"
-
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import FormLabel from '@mui/material/FormLabel';
+//import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
 // css
 
 // types
 import { RaceFormData } from "../../types/forms"
 import { Race } from "../../types/models"
+import { Checkbox, FormControlLabel } from "@mui/material";
 
 interface RaceFormProps {
   onSubmit: (formData: Race) => Promise<void>
@@ -17,13 +28,12 @@ const defaultFormData = {
   winner: "",
   cnstrc: "",
   watchable: false,
-  creatorId: 0,
-  createdAt: "",
-  updatedAt: "",
 }
 
 const LogRace = (props: RaceFormProps) => {
   const [formData, setFormData] = useState<RaceFormData>(props.race || defaultFormData)
+
+  
 
   const handleChange = (evt: { target: { name: any; value: any } }) => {
     console.log(evt.target.name)
@@ -36,47 +46,67 @@ const LogRace = (props: RaceFormProps) => {
     props.onSubmit(formData).then(() => setFormData(defaultFormData))
   }
 
-  return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label htmlFor="circuit-input">Circuit</label>
-      <input
-        required
-        type="text"
-        name="circuit"
-        id="circuit-input"
-        placeholder="Circuit"
-        value={formData.circuit}
-        onChange={handleChange}
-      />
+  const [open, setOpen] = React.useState(false);
 
-      <label htmlFor="winner-input">Winner</label>
-      <input
-        required
-        type="text"
-        name="winner"
-        value={formData.winner}
-        id="winner-input"
-        placeholder="Winner"
-        onChange={handleChange}
-      />
-      <label htmlFor="cnstrc-input">Winning Constructor</label>
-      <input
-        required
-        type="text"
-        name="cnstrc"
-        value={formData.cnstrc}
-        id="cnstrc-input"
-        placeholder="Winning Constructor"
-        onChange={handleChange}
-      />
-      <label htmlFor="watchable-input">Watch Again?</label>
-      <input 
-        type="checkbox"
-        id="watchable-input"
-        onChange={handleChange}
-      />
-      <button type="submit">SUBMIT</button>
-    </form>
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Log a Race
+      </Button>
+      <Dialog open={open} onClose={handleClose} >
+        <DialogTitle>Log a Race</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Fill out this form to log a race you have watched
+          </DialogContentText>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              sx={{width: .95}}
+              required
+              type="text"
+              name="circuit"
+              label="Circuit"
+              id="circuit-input"
+              value={formData.circuit}
+              placeholder="Circuit"
+              onChange={handleChange}
+            />
+            <TextField
+              sx={{width: .95}}
+              required
+              type="text"
+              name="winner"
+              label="Winner"
+              id="winner-input"
+              value={formData.winner}
+              placeholder="Winner"
+              onChange={handleChange}
+            />
+            <TextField
+              sx={{width: .95}}
+              required
+              type="text"
+              name="cnstrc"
+              label="Constructor"
+              id="cnstrc-input"
+              value={formData.cnstrc}
+              placeholder="Constructor"
+              onChange={handleChange}
+            />
+            <Button type="submit" onClick={handleClose}>Submit</Button>
+          </form>
+        </DialogContent>
+          <Button onClick={handleClose}>Cancel</Button>
+      </Dialog>
+    </div>
   )
 }
 

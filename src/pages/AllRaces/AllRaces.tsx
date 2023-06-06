@@ -22,8 +22,6 @@ interface RaceProps {
 const AllRaces = (props: RaceProps): JSX.Element => {
   const [races, setRaces] = useState<Race[]>([])
 
-  const [showLogRaceForm, setShowLogRaceForm] = useState(false)
-
   const { user } = props
 
   useEffect((): void => {
@@ -37,10 +35,6 @@ const AllRaces = (props: RaceProps): JSX.Element => {
     }
     fetchRaces()
   }, [])
-
-  const handleShowForm = () => {
-    setShowLogRaceForm(!showLogRaceForm)
-  }
 
   const handleLogRace = async (formData: Race) => {
     try {
@@ -58,8 +52,7 @@ const AllRaces = (props: RaceProps): JSX.Element => {
   return (
     <main className={styles.container}>
       <h1>Races Watched</h1>
-      <button onClick={handleShowForm}> {showLogRaceForm ? "cancel" : "Log a Race"}</button>
-      {showLogRaceForm ? <LogRace onSubmit={handleLogRace} /> : ""}
+      <LogRace onSubmit={handleLogRace}/>
       {races.map((race: Race) => (
         <p key={race.id}>{race.circuit}</p>
       ))}
