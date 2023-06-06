@@ -7,11 +7,24 @@ import * as raceService from '../../services/raceService'
 // css
 import styles from './AllRaces.module.css'
 
-// types
-import { Race } from '../../types/models'
+//comps
+import LogRace from '../../components/LogRace/LogRace'
 
-const AllRaces = (): JSX.Element => {
+// types
+import { Race, User } from '../../types/models'
+import { RaceFormData } from '../../types/forms'
+
+interface RaceProps {
+  races: Race[]
+  user: User | null;
+}
+
+const AllRaces = (props: RaceProps): JSX.Element => {
   const [races, setRaces] = useState<Race[]>([])
+
+  const [showLogRaceForm, setShowLogRaceForm] = useState(false)
+
+  const { user } = props
 
   useEffect((): void => {
     const fetchRaces = async (): Promise<void> => {
@@ -25,6 +38,19 @@ const AllRaces = (): JSX.Element => {
     fetchRaces()
   }, [])
 
+  const handleShowForm = () => {
+    setShowLogRaceForm(!showLogRaceForm)
+  }
+
+  const handleLogRace = async (formData: Race) => {
+    try {
+      const newRace = await raceService.create(formData)
+      setRaces([newRace, ...races])
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   if (!races.length) {
     return <main className={styles.container}><h1>Loading...</h1></main>
   }
@@ -32,6 +58,8 @@ const AllRaces = (): JSX.Element => {
   return (
     <main className={styles.container}>
       <h1>Hello. This is a list of all the races.</h1>
+      <button onClick={handleShowForm}> {showLogRaceForm ? "cancel" : "Log a Race"}</button>
+      {showLogRaceForm ? <LogRace onSubmit={handleLogRace} race={undefined} /> : ""}
       {races.map((race: Race) => (
         <p key={race.id}>{race.circuit}</p>
       ))}

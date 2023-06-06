@@ -1,6 +1,15 @@
 /* ---------==== custom forms ====--------- */
 
-
+export interface RaceFormData {
+  id?: number;
+  circuit: string;
+  winner: string;
+  cnstrc: string;
+  watchable: boolean;
+  creatorId?: number;
+  createdAt?: string;
+  updatedAt?: string;
+}
 
 /* ---------===== auth forms =====--------- */
 
