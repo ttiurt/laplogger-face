@@ -5,7 +5,9 @@ export interface RaceFormData {
   circuit: string;
   winner: string;
   cnstrc: string;
-  watchable: boolean;
+  watchable: string;
+  rating: number;
+  thoughts: string;
   creatorId?: number;
   createdAt?: string;
   updatedAt?: string;

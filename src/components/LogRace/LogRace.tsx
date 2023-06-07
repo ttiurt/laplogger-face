@@ -4,19 +4,16 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import FormLabel from '@mui/material/FormLabel';
-//import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
 // css
-
+import styles from './LogRace.module.css'
 // types
 import { RaceFormData } from "../../types/forms"
 import { Race } from "../../types/models"
-import { Checkbox, FormControlLabel } from "@mui/material";
 
 interface RaceFormProps {
   onSubmit: (formData: Race) => Promise<void>
@@ -27,7 +24,9 @@ const defaultFormData = {
   circuit: "",
   winner: "",
   cnstrc: "",
-  watchable: false,
+  watchable: "-",
+  rating: 1,
+  thoughts: "",
 }
 
 const LogRace = (props: RaceFormProps) => {
@@ -58,11 +57,11 @@ const LogRace = (props: RaceFormProps) => {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Log a Race
+      <Button className={styles.openLog} variant="contained"  onClick={handleClickOpen}>
+        Log Race
       </Button>
       <Dialog open={open} onClose={handleClose} >
-        <DialogTitle>Log a Race</DialogTitle>
+        <DialogTitle>Log Race</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Fill out this form to log a race you have watched
@@ -101,6 +100,16 @@ const LogRace = (props: RaceFormProps) => {
               placeholder="Constructor"
               onChange={handleChange}
             />
+            <Select
+              id="rating-select"
+              value={formData.rating}
+              label="Score"
+              onChange={handleChange}
+            >
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+            </Select>
             <Button type="submit" onClick={handleClose}>Submit</Button>
           </form>
         </DialogContent>

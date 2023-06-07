@@ -12,17 +12,17 @@ import LogRace from '../../components/LogRace/LogRace'
 
 // types
 import { Race, User } from '../../types/models'
-import { RaceFormData } from '../../types/forms'
+// import { RaceFormData } from '../../types/forms'
 
 interface RaceProps {
   races: Race[]
-  user: User | null;
+  user: User ;
 }
 
 const AllRaces = (props: RaceProps): JSX.Element => {
   const [races, setRaces] = useState<Race[]>([])
 
-  const { user } = props
+  // const { user, profile } = props
 
   useEffect((): void => {
     const fetchRaces = async (): Promise<void> => {
@@ -51,7 +51,7 @@ const AllRaces = (props: RaceProps): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      <h1>Races Watched</h1>
+      <h1 className={styles.racesWatched}>Community Thoughts</h1>
       <LogRace onSubmit={handleLogRace}/>
       {races.map((race: Race) => (
         <p key={race.id}>{race.circuit}</p>
