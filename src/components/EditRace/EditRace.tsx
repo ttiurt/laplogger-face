@@ -22,7 +22,7 @@ import { Race } from "../../types/models"
 
 
 interface RaceFormProps {
-  onSubmit: (formData: RaceFormData) => Promise<void>
+  onSubmit: (formData: RaceFormData) => void
   race?: Race
 }
 
