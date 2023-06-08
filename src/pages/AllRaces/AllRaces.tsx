@@ -16,7 +16,7 @@ import { Race, User } from '../../types/models'
 import { RaceFormData } from '../../types/forms'
 
 interface RaceProps {
-  user: User 
+  user: User | null;
 }
 
 const AllRaces = (props: RaceProps): JSX.Element => {
@@ -45,6 +45,15 @@ const AllRaces = (props: RaceProps): JSX.Element => {
     }
   }
 
+  const handleUpdateRace = async (formData: RaceFormData) => {
+    try {
+      const updatedRace = await raceService.update(formData)
+      console.log({ updatedRace })
+    } catch (error) {
+      console.log({ error })
+    }
+  }
+
   const handleDeleteRace = async (raceId: number): Promise<void> => {
     try {
       await raceService.deleteRace(raceId)
@@ -68,7 +77,7 @@ const AllRaces = (props: RaceProps): JSX.Element => {
           key={race.id}
           race={race}
           onDelete={handleDeleteRace}
-          // onSubmit={handleUpdateRace}
+          onSubmit={handleUpdateRace}
           user={user}
         />
       ))}

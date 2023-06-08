@@ -13,7 +13,7 @@ import { FormControl, FormLabel } from "@mui/material";
 
 
 // css
-import styles from './LogRace.module.css'
+import styles from './EditRace.module.css'
 
 
 // types
@@ -35,7 +35,7 @@ const defaultFormData = {
   thoughts: "",
 }
 
-const LogRace = (props: RaceFormProps) => {
+const EditRace = (props: RaceFormProps) => {
   const [formData, setFormData] = useState<RaceFormData>(props.race || defaultFormData)
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,6 +50,8 @@ const LogRace = (props: RaceFormProps) => {
     setFormData(defaultFormData)
   }
 
+  
+
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -63,7 +65,7 @@ const LogRace = (props: RaceFormProps) => {
   return (
     <div>
       <Button className={styles.openLog} variant="contained"  onClick={handleClickOpen}>
-        Log Race
+        Edit Log
       </Button>
       <Dialog open={open} onClose={handleClose} >
         <DialogTitle>Log Race</DialogTitle>
@@ -160,4 +162,4 @@ const LogRace = (props: RaceFormProps) => {
   )
 }
 
-export default LogRace
+export default EditRace

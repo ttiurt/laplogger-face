@@ -1,20 +1,24 @@
 // css
 import styles from './RaceCard.module.css'
 
-
+//comps
+import EditRace from '../EditRace/EditRace';
 
 // types
 import { Race, User } from '../../types/models'
+import { RaceFormData } from '../../types/forms';
+
 
 
 interface RaceCardProps {
   race: Race
-  user: User
+  user: User | null;
   onDelete: (raceId: number) => Promise<void> 
+  onSubmit: (formData: RaceFormData) => void
 }
 
 const RaceCard = (props: RaceCardProps): JSX.Element => {
-  const { user, race, onDelete } = props
+  const { user, race, onDelete, onSubmit } = props
 
   const isCreator = () => {
     return user.profile.id === race.creatorId
@@ -24,6 +28,10 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
     if (race.id) {
       onDelete(race.id)
     }
+  }
+
+  const handleSubmit = (formData: RaceFormData) => {
+    onSubmit({ id: race.id, ...formData })
   }
 
   return (
@@ -42,9 +50,13 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
             <button onClick={handleDeleteRace}>DELETE</button>
           ):("")}
         </div>
+        <div>
+          {isCreator() ? (
+            <EditRace onSubmit={handleSubmit} />
+          ):("")}
+        </div>
       </>
     </div>
   )
 }
-
 export default RaceCard

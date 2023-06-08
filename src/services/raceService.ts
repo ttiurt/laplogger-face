@@ -28,21 +28,21 @@ async function create(formData: RaceFormData) {
   }
 }
 
-// async function update(raceFormData) {
-//   try {
-//     const res = await fetch(`${BASE_URL}/${raceFormData._id}`,{
-//       method: 'PUT',
-//       headers: {
-//       'Authorization': `Bearer ${tokenService.getToken()}`,
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(raceFormData)
-//     })
-//     return res.json()
-//   } catch(error) {
-//     console.log(error)
-//   }
-// }
+async function update(formData: RaceFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${formData.id}`,{
+      method: 'PUT',
+      headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    return res.json()
+  } catch(error) {
+    console.log(error)
+  }
+}
 
 async function deleteRace(raceId: number) {
   try {
@@ -60,4 +60,4 @@ async function deleteRace(raceId: number) {
 
 
 
-export { index, create, deleteRace }
+export { index, create, update, deleteRace }

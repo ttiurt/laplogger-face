@@ -1,6 +1,9 @@
 // npm modules 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
+
+
+
 
 // pages
 import Signup from './pages/Signup/Signup'
@@ -10,37 +13,64 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AllRaces from './pages/AllRaces/AllRaces'
 
+
+
+
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
+
+
+
 // services
 import * as authService from './services/authService'
-import * as profileService from './services/profileService'
+// import * as profileService from './services/profileService'
+
+
+
 
 // styles
 import './App.css'
 
+
+
+
 // types
-import { User, Profile } from './types/models'
+import { User } from './types/models'
+// ^^ DONT FORGET TO BRING PROFILE BACK
+
+
+
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
   const navigate = useNavigate()
-  const [profiles, setProfiles] = useState<Profile[]>([])
-
-  useEffect((): void => {
-    const fetchProfiles = async (): Promise<void> => {
-      try {
-        const profileData: Profile[] = await profileService.getAllProfiles()
-        setProfiles(profileData)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    user ? fetchProfiles() : setProfiles([])
-  }, [user])
   
+
+
+
+
+  // vv FOR LATER ADMIN PERMS vv
+
+  // const [profiles, setProfiles] = useState<Profile[]>([])
+  // useEffect((): void => {
+  //   const fetchProfiles = async (): Promise<void> => {
+  //     try {
+  //       const profileData: Profile[] = await profileService.getAllProfiles()
+  //       setProfiles(profileData)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  //   user ? fetchProfiles() : setProfiles([])
+  // }, [user])
+  
+
+
+
+
+
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
