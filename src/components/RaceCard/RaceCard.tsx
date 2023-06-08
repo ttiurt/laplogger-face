@@ -1,9 +1,3 @@
-// npm modules
-import { useState, useEffect } from 'react'
-
-// services
-import * as raceService from '../../services/raceService'
-
 // css
 import styles from './RaceCard.module.css'
 
@@ -15,28 +9,12 @@ import { Race, User } from '../../types/models'
 
 interface RaceCardProps {
   race: Race
-  user: User | null;
+  user: User
   onDelete: (raceId: number) => Promise<void> 
 }
 
 const RaceCard = (props: RaceCardProps): JSX.Element => {
-  const [races, setRaces] = useState<Race[]>([])
-
   const { user, race, onDelete } = props
-
-  useEffect((): void => {
-    const fetchRaces = async (): Promise<void> => {
-      try {
-        const raceData: Race[] = await raceService.index()
-        setRaces(raceData)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetchRaces()
-  }, [])
-
-
 
   const isCreator = () => {
     return user.profile.id === race.creatorId

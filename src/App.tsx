@@ -8,8 +8,6 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
-
-
 import AllRaces from './pages/AllRaces/AllRaces'
 
 // components
@@ -18,7 +16,6 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
-
 import * as profileService from './services/profileService'
 
 // styles
@@ -71,7 +68,7 @@ function App(): JSX.Element {
           path="/races"
           element={
             <ProtectedRoute user={user}>
-              <AllRaces user={user} race={[]} />
+              <AllRaces user={user} />
             </ProtectedRoute>
           }
         />

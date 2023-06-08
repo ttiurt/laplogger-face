@@ -16,8 +16,7 @@ import { Race, User } from '../../types/models'
 import { RaceFormData } from '../../types/forms'
 
 interface RaceProps {
-  race: Race[]
-  user: User | null;
+  user: User 
 }
 
 const AllRaces = (props: RaceProps): JSX.Element => {
