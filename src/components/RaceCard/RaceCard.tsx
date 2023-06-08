@@ -64,7 +64,7 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
           <div className={styles.btnCntnr}>
             <div>
               {isCreator() ? (
-                <button onClick={handleDeleteRace}>DELETE</button>
+                <button className={styles.dltBtn} onClick={handleDeleteRace}>DELETE</button>
               ):("")}
             </div>
             <div>
@@ -81,12 +81,3 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
   )
 }
 export default RaceCard
-
-{/* 
-    <h1>{race.circuit}</h1>
-    <p>Winner: {race.winner}</p>
-    <p>Constructor: {race.cnstrc}</p>
-    <p>Thoughts: {race.thoughts}</p>
-    <p>Watch Again? {race.watchable}</p>
-    <p>Rating: {race.rating}/10</p> 
-*/}

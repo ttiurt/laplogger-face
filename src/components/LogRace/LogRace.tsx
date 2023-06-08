@@ -67,7 +67,7 @@ const LogRace = (props: RaceFormProps) => {
 
   return (
     <div>
-      <Button className={styles.openLog} variant="contained"  onClick={handleClickOpen}>
+      <Button  sx={{width: 1, height: 50, fontSize: 25, fontWeight: 900}} color="error" className={styles.openLog} variant="contained"  onClick={handleClickOpen}>
         Log Race
       </Button>
       <Dialog open={open} onClose={handleClose} >

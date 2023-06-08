@@ -69,7 +69,7 @@ const EditRace = (props: RaceFormProps) => {
 
   return (
     <div>
-      <Button className={styles.openLog} variant="contained"  onClick={handleClickOpen}>
+      <Button color= "success" size="large" className={styles.openEdit} variant="contained"  onClick={handleClickOpen}>
         Edit Log
       </Button>
       <Dialog open={open} onClose={handleClose} >

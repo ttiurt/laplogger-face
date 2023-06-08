@@ -70,8 +70,10 @@ const AllRaces = (props: RaceProps): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.cmtyThghts}>Community Thoughts</h1>
-      <LogRace onSubmit={handleLogRace} />
+      <div className={styles.cmntyHead}>
+        <h1 className={styles.cmtyThghts}>Community Thoughts</h1>
+        <LogRace onSubmit={handleLogRace} />
+      </div>
       {races.map((race: Race) => (
         <RaceCard 
           key={race.id}
