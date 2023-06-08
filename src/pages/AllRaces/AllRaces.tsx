@@ -13,11 +13,11 @@ import RaceCard from '../../components/RaceCard/RaceCard'
 
 // types
 import { Race, User } from '../../types/models'
-// import { RaceFormData } from '../../types/forms'
+import { RaceFormData } from '../../types/forms'
 
 interface RaceProps {
-  races: Race[]
-  user: User
+  race: Race[]
+  user: User | null;
 }
 
 const AllRaces = (props: RaceProps): JSX.Element => {
@@ -37,7 +37,7 @@ const AllRaces = (props: RaceProps): JSX.Element => {
     fetchRaces()
   }, [])
 
-  const handleLogRace = async (formData: Race)  => {
+  const handleLogRace = async (formData: RaceFormData)  => {
     try {
       const newRace = await raceService.create(formData)
       setRaces([newRace, ...races])

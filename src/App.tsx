@@ -71,7 +71,7 @@ function App(): JSX.Element {
           path="/races"
           element={
             <ProtectedRoute user={user}>
-              <AllRaces user={user} />
+              <AllRaces user={user} race={[]} />
             </ProtectedRoute>
           }
         />

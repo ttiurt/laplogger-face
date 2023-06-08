@@ -4,7 +4,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -151,7 +151,6 @@ const LogRace = (props: RaceFormProps) => {
                 <MenuItem value={'no'}>No</MenuItem>
               </Select>
             </FormControl>
-            
             <Button className={styles.subBtn} type="submit" onClick={handleClose}>Submit</Button>
           </form>
         </DialogContent>

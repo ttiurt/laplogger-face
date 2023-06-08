@@ -7,7 +7,7 @@ import * as raceService from '../../services/raceService'
 // css
 import styles from './RaceCard.module.css'
 
-// import LogRace from '../LogRace/LogRace'
+
 
 // types
 import { Race, User } from '../../types/models'
@@ -15,7 +15,7 @@ import { Race, User } from '../../types/models'
 
 interface RaceCardProps {
   race: Race
-  user: User
+  user: User | null;
   onDelete: (raceId: number) => Promise<void> 
 }
 
@@ -49,7 +49,7 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
   }
 
   return (
-    <div>
+    <div className={styles.raceCardCntnr}>
       <>
         <ul key={race.id}>
           <h1>{race.circuit}</h1>

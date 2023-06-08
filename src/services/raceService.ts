@@ -44,7 +44,7 @@ async function create(formData: RaceFormData) {
 //   }
 // }
 
-async function deleteRace(raceId) {
+async function deleteRace(raceId: number) {
   try {
     const res= await fetch(`${BASE_URL}/${raceId}`, {
       method:'Delete',
@@ -60,4 +60,4 @@ async function deleteRace(raceId) {
 
 
 
-export { index, create, update, deleteRace }
+export { index, create, deleteRace }
