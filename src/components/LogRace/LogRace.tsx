@@ -38,8 +38,6 @@ const defaultFormData = {
 const LogRace = (props: RaceFormProps) => {
   const [formData, setFormData] = useState<RaceFormData>(props.race || defaultFormData)
 
-  
-
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     console.log(evt.target.name)
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
