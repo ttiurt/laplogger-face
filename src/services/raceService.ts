@@ -28,4 +28,36 @@ async function create(formData: RaceFormData) {
   }
 }
 
-export { index, create }
+// async function update(raceFormData) {
+//   try {
+//     const res = await fetch(`${BASE_URL}/${raceFormData._id}`,{
+//       method: 'PUT',
+//       headers: {
+//       'Authorization': `Bearer ${tokenService.getToken()}`,
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(raceFormData)
+//     })
+//     return res.json()
+//   } catch(error) {
+//     console.log(error)
+//   }
+// }
+
+async function deleteRace(raceId) {
+  try {
+    const res= await fetch(`${BASE_URL}/${raceId}`, {
+      method:'Delete',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+
+export { index, create, update, deleteRace }

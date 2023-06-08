@@ -9,6 +9,7 @@ import styles from './AllRaces.module.css'
 
 //comps
 import LogRace from '../../components/LogRace/LogRace'
+import RaceCard from '../../components/RaceCard/RaceCard'
 
 // types
 import { Race, User } from '../../types/models'
@@ -16,13 +17,13 @@ import { Race, User } from '../../types/models'
 
 interface RaceProps {
   races: Race[]
-  user: User ;
+  user: User
 }
 
 const AllRaces = (props: RaceProps): JSX.Element => {
   const [races, setRaces] = useState<Race[]>([])
 
-  // const { user, profile } = props
+  const { user } = props
 
   useEffect((): void => {
     const fetchRaces = async (): Promise<void> => {
@@ -36,10 +37,20 @@ const AllRaces = (props: RaceProps): JSX.Element => {
     fetchRaces()
   }, [])
 
-  const handleLogRace = async (formData: Race) => {
+  const handleLogRace = async (formData: Race)  => {
     try {
       const newRace = await raceService.create(formData)
       setRaces([newRace, ...races])
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleDeleteRace = async (raceId: number): Promise<void> => {
+    try {
+      await raceService.deleteRace(raceId)
+      const nextRaces = races.filter((race) => race.id !== raceId)
+      setRaces(nextRaces)
     } catch (error) {
       console.log(error)
     }
@@ -52,9 +63,15 @@ const AllRaces = (props: RaceProps): JSX.Element => {
   return (
     <main className={styles.container}>
       <h1 className={styles.racesWatched}>Community Thoughts</h1>
-      <LogRace onSubmit={handleLogRace}/>
+      <LogRace onSubmit={handleLogRace} />
       {races.map((race: Race) => (
-        <p key={race.id}>{race.circuit}</p>
+        <RaceCard 
+          key={race.id}
+          race={race}
+          onDelete={handleDeleteRace}
+          // onSubmit={handleUpdateRace}
+          user={user}
+        />
       ))}
     </main>
   )

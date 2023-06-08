@@ -1,6 +1,6 @@
 // npm modules 
 import { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
 import Signup from './pages/Signup/Signup'
@@ -18,30 +18,30 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
-import * as raceService from './services/raceService'
+
+import * as profileService from './services/profileService'
 
 // styles
 import './App.css'
 
 // types
-import { User, Race } from './types/models'
+import { User, Profile } from './types/models'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
   const navigate = useNavigate()
-  const [races, setRaces] = useState<Race[]>([])
-  const { raceId } = useParams()
+  const [profiles, setProfiles] = useState<Profile[]>([])
 
   useEffect((): void => {
-    const fetchRaces = async (): Promise<void> => {
+    const fetchProfiles = async (): Promise<void> => {
       try {
-        const dogData = user && await raceService.index()
-        setRaces(dogData)
+        const profileData: Profile[] = await profileService.getAllProfiles()
+        setProfiles(profileData)
       } catch (error) {
         console.log(error)
       }
     }
-    user ? fetchRaces() : setRaces([])
+    user ? fetchProfiles() : setProfiles([])
   }, [user])
   
   const handleLogout = (): void => {
@@ -71,7 +71,7 @@ function App(): JSX.Element {
           path="/races"
           element={
             <ProtectedRoute user={user}>
-              <AllRaces />
+              <AllRaces user={user} />
             </ProtectedRoute>
           }
         />

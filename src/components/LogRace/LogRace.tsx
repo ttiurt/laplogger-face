@@ -9,22 +9,28 @@ import MenuItem from '@mui/material/MenuItem';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { FormControl, FormLabel } from "@mui/material";
+
+
 // css
 import styles from './LogRace.module.css'
+
+
 // types
 import { RaceFormData } from "../../types/forms"
 import { Race } from "../../types/models"
 
+
 interface RaceFormProps {
-  onSubmit: (formData: Race) => Promise<void>
-  race: Race
+  onSubmit: (formData: RaceFormData) => Promise<void>
+  race?: Race
 }
 
 const defaultFormData = {
   circuit: "",
   winner: "",
   cnstrc: "",
-  watchable: "-",
+  watchable: "",
   rating: 1,
   thoughts: "",
 }
@@ -34,7 +40,7 @@ const LogRace = (props: RaceFormProps) => {
 
   
 
-  const handleChange = (evt: { target: { name: any; value: any } }) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     console.log(evt.target.name)
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
@@ -42,7 +48,8 @@ const LogRace = (props: RaceFormProps) => {
   const handleSubmit = (evt: React.FormEvent<HTMLElement>) => {
     console.log(formData)
     evt.preventDefault()
-    props.onSubmit(formData).then(() => setFormData(defaultFormData))
+    props.onSubmit(formData)
+    setFormData(defaultFormData)
   }
 
   const [open, setOpen] = React.useState(false);
@@ -68,49 +75,86 @@ const LogRace = (props: RaceFormProps) => {
           </DialogContentText>
           <form onSubmit={handleSubmit}>
             <TextField
-              sx={{width: .95}}
+              sx={{width: .95, height: 70}}
               required
               type="text"
               name="circuit"
               label="Circuit"
               id="circuit-input"
               value={formData.circuit}
-              placeholder="Circuit"
+              placeholder="Ex: 'Spa' , 'Belgium GP' , 'Circuit de Spa-Francorchamps'"
               onChange={handleChange}
             />
             <TextField
-              sx={{width: .95}}
+              sx={{width: .95, height: 70}}
               required
               type="text"
               name="winner"
               label="Winner"
               id="winner-input"
               value={formData.winner}
-              placeholder="Winner"
+              placeholder="Ex: 'Verstappen'"
               onChange={handleChange}
             />
             <TextField
-              sx={{width: .95}}
+              sx={{width: .95, height: 70}}
               required
               type="text"
               name="cnstrc"
               label="Constructor"
               id="cnstrc-input"
               value={formData.cnstrc}
-              placeholder="Constructor"
+              placeholder="Ex: 'Redbull'"
               onChange={handleChange}
             />
-            <Select
-              id="rating-select"
-              value={formData.rating}
-              label="Score"
+            <TextField
+              sx={{width: .95, height: 70}}
+              required
+              type="text"
+              name="thoughts"
+              label="Thoughts on the Race"
+              id="thoughts-input"
+              value={formData.thoughts}
+              placeholder="Ex: 'Another Max masterclass!'"
               onChange={handleChange}
-            >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-            </Select>
-            <Button type="submit" onClick={handleClose}>Submit</Button>
+            />
+            <FormControl sx={{ m: 1, minWidth: 70 }} size="small">
+              <FormLabel id="rating-select-label">Rating</FormLabel>
+              <Select
+                required
+                name="rating"
+                id="rating-select"
+                value={formData.rating}
+                onChange={handleChange}
+              >
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+                <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={6}>6</MenuItem>
+                <MenuItem value={7}>7</MenuItem>
+                <MenuItem value={8}>8</MenuItem>
+                <MenuItem value={9}>9</MenuItem>
+                <MenuItem value={10}>10</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl sx={{ m: 1, minWidth: 100 }} size="small">
+              <FormLabel id="watchable-select-label">Watch Again?</FormLabel>
+              <Select
+                required
+                name="watchable"
+                id="watchable-select"
+                value={formData.watchable}
+                placeholder="Watch Again?"
+                onChange={handleChange}
+              >
+                <MenuItem value={'yes'}>Yes</MenuItem>
+                <MenuItem value={'no'}>No</MenuItem>
+              </Select>
+            </FormControl>
+            
+            <Button className={styles.subBtn} type="submit" onClick={handleClose}>Submit</Button>
           </form>
         </DialogContent>
           <Button onClick={handleClose}>Cancel</Button>
