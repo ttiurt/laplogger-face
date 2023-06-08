@@ -50,25 +50,21 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
 
   return (
     <div>
-      {races.map((race: Race) => (
-        <>
-          <ul key={race.id}>
-            <h1>{race.circuit}</h1>
-            <p>Winner: {race.winner}</p>
-            <p>Constructor: {race.cnstrc}</p>
-            <p>Thoughts: {race.thoughts}</p>
-            <p>Watch Again? {race.watchable}</p>
-            <p>Rating: {race.rating}/10</p>
-          </ul>
-          <div>
-            {isCreator() ? (
-              <button onClick={handleDeleteRace}>DELETE</button>
-            ):("")}
-          </div>
-        </>
-        
-        
-      ))}
+      <>
+        <ul key={race.id}>
+          <h1>{race.circuit}</h1>
+          <p>Winner: {race.winner}</p>
+          <p>Constructor: {race.cnstrc}</p>
+          <p>Thoughts: {race.thoughts}</p>
+          <p>Watch Again? {race.watchable}</p>
+          <p>Rating: {race.rating}/10</p>
+        </ul>
+        <div>
+          {isCreator() ? (
+            <button onClick={handleDeleteRace}>DELETE</button>
+          ):("")}
+        </div>
+      </>
     </div>
   )
 }
