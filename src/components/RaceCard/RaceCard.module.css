@@ -1,0 +1,126 @@
+.raceCardCntnr {
+  display: flex;
+  margin-top: 2vw;
+  width: 90%;
+  background: rgb(65, 65, 65);
+  border-radius: 8px;
+  align-items: center;
+  justify-items: center;
+}
+
+details {
+  width: 90%;
+}
+
+details[open] {
+  padding-bottom: 10px;
+}
+
+details > summary {
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  list-style: none; 
+  font-size: 2vw;
+}
+
+details > summary::after {
+  font-size: larger;
+  font-style: italic;
+  content: "view";
+  color: rgb(71, 196, 81);
+}
+
+details[open] > summary::after {
+  font-style: italic;
+  content: "hide";
+  color: rgb(196, 71, 71);
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.logCirc {
+  font-family: f1wide;
+  font-size: 2vw;
+}
+
+.logShow { 
+  width: 100%;
+  padding: 3vw;
+  font-family: f1reg;
+  font-size: 1.5vw;
+  font-weight: 200;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr .5fr;
+  grid-auto-columns: 1fr;
+  gap: 10px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "wnnr cnstrc rtng wtchbl"
+    "thghts . . ."
+    "thghtsTxt thghtsTxt thghtsTxt thghtsTxt";
+}
+
+.wnnr { 
+  grid-area: wnnr; 
+  justify-self: center;
+  align-self: start;
+}
+
+.cnstrc { 
+  grid-area: cnstrc; 
+  justify-self: center;
+  align-self: start;
+}
+
+.rtng { 
+  grid-area: rtng; 
+  justify-self: center;
+  align-self: start;
+}
+
+.wtchbl { 
+  grid-area: wtchbl; 
+  justify-self: center;
+  align-self: start;
+}
+
+.thghts { 
+  grid-area: thghts; 
+  justify-self: start;
+  align-self: center;
+}
+
+.thghtsTxt { 
+  grid-area: thghtsTxt; 
+  justify-self: start;
+  align-self: start;
+}
+
+.wnnr > h3 { 
+  font-family: f1bold;
+  font-size: 2vw;
+}
+
+.cnstrc > h3 { 
+  font-family: f1bold;
+  font-size: 2vw;
+}
+
+.rtng > h3 { 
+  font-family: f1bold;
+  font-size: 2vw;
+}
+
+.wtchbl > h3 { 
+  font-family: f1bold;
+  font-size: 2vw;
+}
+
+.thghts > h3 { 
+  font-family: f1bold;
+  font-size: 2vw;
+}

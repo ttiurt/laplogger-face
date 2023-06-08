@@ -4,7 +4,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import Select from '@mui/material/Select';
+import Select, {SelectChangeEvent} from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -39,6 +39,11 @@ const LogRace = (props: RaceFormProps) => {
   const [formData, setFormData] = useState<RaceFormData>(props.race || defaultFormData)
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(evt.target.name)
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
+
+  const handleSelectChange = (evt: SelectChangeEvent<number | string>): void => {
     console.log(evt.target.name)
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
@@ -123,7 +128,7 @@ const LogRace = (props: RaceFormProps) => {
                 name="rating"
                 id="rating-select"
                 value={formData.rating}
-                onChange={handleChange}
+                onChange={handleSelectChange}
               >
                 <MenuItem value={1}>1</MenuItem>
                 <MenuItem value={2}>2</MenuItem>
@@ -145,7 +150,7 @@ const LogRace = (props: RaceFormProps) => {
                 id="watchable-select"
                 value={formData.watchable}
                 placeholder="Watch Again?"
-                onChange={handleChange}
+                onChange={handleSelectChange}
               >
                 <MenuItem value={'Yes'}>Yes</MenuItem>
                 <MenuItem value={'No'}>No</MenuItem>

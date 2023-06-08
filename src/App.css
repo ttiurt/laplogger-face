@@ -9,6 +9,16 @@
   src: url('/fonts/Formula1-Regular.otf');
 }
 
+@font-face {
+  font-family: f1bold;
+  src: url('/fonts/Formula1-Bold.otf');
+}
+
+@font-face {
+  font-family: f1wide;
+  src: url('/fonts/Formula1-Wide.otf');
+}
+
 body {
   box-sizing: border-box;
 

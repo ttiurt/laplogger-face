@@ -21,7 +21,7 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
   const { user, race, onDelete, onSubmit } = props
 
   const isCreator = () => {
-    return user.profile.id === race.creatorId
+    if (user?.profile.id) return user.profile.id === race.creatorId
   }
 
   const handleDeleteRace = () => {
@@ -37,26 +37,56 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
   return (
     <div className={styles.raceCardCntnr}>
       <>
-        <ul key={race.id}>
-          <h1>{race.circuit}</h1>
-          <p>Winner: {race.winner}</p>
-          <p>Constructor: {race.cnstrc}</p>
-          <p>Thoughts: {race.thoughts}</p>
-          <p>Watch Again? {race.watchable}</p>
-          <p>Rating: {race.rating}/10</p>
-        </ul>
-        <div>
-          {isCreator() ? (
-            <button onClick={handleDeleteRace}>DELETE</button>
-          ):("")}
-        </div>
-        <div>
-          {isCreator() ? (
-            <EditRace onSubmit={handleSubmit} />
-          ):("")}
-        </div>
+        <details key={race.id}>
+          <summary className={styles.summary}>
+            <div className={styles.logCirc}>{race.circuit}</div>
+          </summary>
+          <div className={styles.logShow}>
+            <div className={styles.wnnr}>
+              <h3>Winner:</h3> 
+              {race.winner}
+            </div>
+            <div className={styles.cnstrc}>
+              <h3>Constructor:</h3>
+              {race.cnstrc}
+            </div>
+            <div className={styles.thghts}><h3>Thoughts:</h3></div>
+            <div className={styles.thghtsTxt}>{race.thoughts}</div>
+            <div className={styles.wtchbl}>
+              <h3>Watch Again?</h3> 
+              {race.watchable}
+            </div>
+            <div className={styles.rtng}>
+              <h3>Rating:</h3> 
+              {race.rating}/10
+            </div>
+          </div>
+          <div className={styles.btnCntnr}>
+            <div>
+              {isCreator() ? (
+                <button onClick={handleDeleteRace}>DELETE</button>
+              ):("")}
+            </div>
+            <div>
+              {isCreator() ? (
+                <EditRace onSubmit={handleSubmit} />
+              ):("")}
+            </div>
+          </div>
+          
+        </details>
+        
       </>
     </div>
   )
 }
 export default RaceCard
+
+{/* 
+    <h1>{race.circuit}</h1>
+    <p>Winner: {race.winner}</p>
+    <p>Constructor: {race.cnstrc}</p>
+    <p>Thoughts: {race.thoughts}</p>
+    <p>Watch Again? {race.watchable}</p>
+    <p>Rating: {race.rating}/10</p> 
+*/}
