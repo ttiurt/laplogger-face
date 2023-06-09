@@ -28,4 +28,4 @@ Lap Logger is currently a website where fans of Formula 1 can post their opinion
 - Users can access their profile with all their post
 - Followers/Friends
 - Ability to make logs/profile private vs. public
-- Def more stuff, tired to think
+- Def more stuff, too tired to think
