@@ -4,6 +4,7 @@
 Lap Logger is currently a website where fans of Formula 1 can post their opinions and ratings on recent races. Eventually the website will be molded into a place where you can log any race you’ve watched, past or present, to your profile to keep track of races you may or may not want to rewatch down the road. The goal is to provide a site similar to Letterboxd or MyAnimeList for the fans of Formula 1.
 
 ## Start logging [here](https://laplogger.netlify.app/ "Lap Logger link")
+(flashbang warning)
 
 ## Back-end [here](https://github.com/ttiurt/laplogger-butt "LL back-end link")
 
