@@ -33,13 +33,13 @@ details > summary::after {
   font-size: larger;
   font-style: italic;
   content: "view";
-  color: rgb(71, 196, 81);
+  color: #30ff01;
 }
 
 details[open] > summary::after {
   font-style: italic;
   content: "hide";
-  color: rgb(196, 71, 71);
+  color: #FF1801;
 }
 
 details > summary::-webkit-details-marker {
@@ -179,11 +179,12 @@ details > summary::-webkit-details-marker {
   -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   color: #ffffff;
-  background-color: rgb(148, 51, 51);
+  background-color: #FF1801;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
 }
 
 .dltBtn:hover {
-  background-color: rgb(73, 37, 37);
+  background-color: rgb(148, 51, 51);
   color: white;
 }
+

@@ -17,7 +17,7 @@
   font-family: f1bold;
   font-size: 7.5vw;
   padding: 1vw 5vw 1vw 5vw;
-  border: #ba2a2a 10px solid;
+  border: #FF1801 10px solid;
   border-radius: 12px;
 }
 
@@ -43,6 +43,6 @@
 }
 
 .twit {
-  color: #ba2a2a;
+  color: #FF1801;
   text-decoration: none;
 }
