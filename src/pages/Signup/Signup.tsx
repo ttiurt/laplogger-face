@@ -45,7 +45,7 @@ const Signup = (props: AuthPageProps): JSX.Element => {
       setIsSubmitted(true)
       await authService.signup(formData)
       handleAuthEvt()
-      navigate('/')
+      navigate('/races')
     } catch (err) {
       console.log(err)
       handleErrMsg(err, setMessage)
@@ -63,7 +63,7 @@ const Signup = (props: AuthPageProps): JSX.Element => {
       <p className={styles.message}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
         <label className={styles.label}>
-          Name
+          Name:
           <input type="text" value={name} name="name" onChange={handleChange} />
         </label>
         <label className={styles.label}>
