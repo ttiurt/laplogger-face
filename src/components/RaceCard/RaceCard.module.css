@@ -95,7 +95,7 @@ details > summary::-webkit-details-marker {
 
 .thghts { 
   grid-area: thghts; 
-  justify-self: start;
+  justify-self: center;
   align-self: center;
 }
 

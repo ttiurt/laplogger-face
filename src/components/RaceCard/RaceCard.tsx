@@ -43,21 +43,21 @@ const RaceCard = (props: RaceCardProps): JSX.Element => {
           </summary>
           <div className={styles.logShow}>
             <div className={styles.wnnr}>
-              <h3>Winner:</h3> 
+              <h3>-Winner-</h3> 
               {race.winner}
             </div>
             <div className={styles.cnstrc}>
-              <h3>Constructor:</h3>
+              <h3>-Constructor-</h3>
               {race.cnstrc}
             </div>
-            <div className={styles.thghts}><h3>Thoughts:</h3></div>
+            <div className={styles.thghts}><h3>-Thoughts-</h3></div>
             <div className={styles.thghtsTxt}>{race.thoughts}</div>
             <div className={styles.wtchbl}>
-              <h3>Watch Again?</h3> 
+              <h3>-Watch Again?-</h3> 
               {race.watchable}
             </div>
             <div className={styles.rtng}>
-              <h3>Rating:</h3> 
+              <h3>-Rating-</h3> 
               {race.rating}/10
             </div>
           </div>

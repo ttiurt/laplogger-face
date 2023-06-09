@@ -69,7 +69,7 @@ const AllRaces = (props: RaceProps): JSX.Element => {
   }
 
   return (
-    <main className={styles.container}>
+    <main className={styles.ARcontainer}>
       <div className={styles.cmntyHead}>
         <h1 className={styles.cmtyThghts}>Community Thoughts</h1>
         <LogRace onSubmit={handleLogRace} />

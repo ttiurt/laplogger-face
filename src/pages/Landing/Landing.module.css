@@ -3,3 +3,46 @@
   align-items: center;
   flex-direction: column;
 }
+
+.hero {
+  display: flex;
+  background: transparent;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+  width: 100%;
+  justify-content: center;
+}
+
+.hero > h1 {
+  font-family: f1bold;
+  font-size: 7.5vw;
+  padding: 1vw 5vw 1vw 5vw;
+  border: #ba2a2a 10px solid;
+  border-radius: 12px;
+}
+
+.about {
+  width: 75vw;
+  padding-right: 7.5vw;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border-top: #000000 5px solid;
+  border-right: #000000 5px solid;
+  border-radius: 0 20px 0 0;
+}
+
+.about > h2 {
+  font-family: f1bold;
+  font-size: 4vw;
+}
+
+.about > p {
+  font-family: f1reg;
+  font-size: 2vw;
+}
+
+.twit {
+  color: #ba2a2a;
+  text-decoration: none;
+}

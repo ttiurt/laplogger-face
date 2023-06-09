@@ -36,17 +36,17 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
-a,
-a:visited {
+
+.navLink:visited {
   color: #ffffff
 }
 
-a {
+.navLink {
   text-decoration: none;
   color: #ffffff;
 }
 
-a:hover {
+.navLink:hover {
   color: #222222;
 }
 
