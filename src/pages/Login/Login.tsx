@@ -55,7 +55,7 @@ const LoginPage = (props: AuthPageProps): JSX.Element => {
       <p className={styles.message}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
         <label className={styles.label}>
-          Email
+          Email:
           <input
             type="text"
             value={email}
@@ -64,7 +64,7 @@ const LoginPage = (props: AuthPageProps): JSX.Element => {
           />
         </label>
         <label className={styles.label}>
-          Password
+          Password:
           <input
             type="password"
             value={password}
