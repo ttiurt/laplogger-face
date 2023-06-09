@@ -50,3 +50,8 @@ input[type="file"] {
 .form > label:last-of-type {
   margin-bottom: 16px;
 }
+
+.imgUP {
+  margin-top: 3.5vw;
+  border-bottom: none;
+}

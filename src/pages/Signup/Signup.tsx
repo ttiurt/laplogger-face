@@ -125,6 +125,7 @@ const Signup = (props: AuthPageProps): JSX.Element => {
         <label className={styles.label}>
           Upload Photo:
           <input 
+            className={styles.imgUP}
             type="file" 
             name="photo" 
             onChange={handleChangePhoto}
